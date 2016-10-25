@@ -31,23 +31,21 @@ describe('redux-async-await middleware', () => {
     const promise = store.dispatch(actions.asyncWillResolve(testText))
 
     promise.then((action) => {
+      console.log(action)
       expect(store.getState().text).toEqual(testText)
       done();
     })
     expect(store.getState()).toEqual(initState)
   })
 
-  it('reject promise', () => {
+  it('reject promise', (done) => {
     const testText = 'the reject action'
     const promise = store.dispatch(actions.asyncWillReject(testText))
     
-    promise.then(() => {
-      expect(store.getState().error).toEqual(testText)
-      console.log('promise ok')
+    promise.catch((err) => {
+      expect(err).toEqual(testText)
       done();
     })
     expect(store.getState()).toEqual(initState)
   })
-
-
 })
