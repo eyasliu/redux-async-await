@@ -1,6 +1,6 @@
 {
   "name": "redux-async-await",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "redux middleware to es7 async/await syntax action and promise action",
   "main": "lib/index.js",
   "files": [
@@ -18,7 +18,12 @@
   },
   "keywords": [
     "redux",
-    "reducer"
+    "async",
+    "await",
+    "async/await",
+    "async-await",
+    "promise",
+    "middleware"
   ],
   "author": "Eyas",
   "license": "ISC",
