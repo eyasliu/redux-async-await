@@ -1,7 +1,7 @@
 {
-  "name": "redux-create-reducer-curry",
+  "name": "redux-async-await",
   "version": "1.0.0",
-  "description": "create fast, save, readability reducer",
+  "description": "redux middleware to es7 async/await syntax action and promise action",
   "main": "lib/index.js",
   "files": [
     "lib",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eyasliu/redux-create-reducer.git"
+    "url": "git+https://github.com/eyasliu/redux-async-await.git"
   },
   "keywords": [
     "redux",
@@ -23,9 +23,9 @@
   "author": "Eyas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eyasliu/redux-create-reducer/issues"
+    "url": "https://github.com/eyasliu/redux-async-await/issues"
   },
-  "homepage": "https://github.com/eyasliu/redux-create-reducer#readme",
+  "homepage": "https://github.com/eyasliu/redux-async-await#readme",
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-polyfill": "^6.16.0",
