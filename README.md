@@ -28,6 +28,7 @@ export async function getInfo(id){
     data
   }
 }
+// use Promise
 export function getList(){
   return fetch('/getList').then(res => res.json()).then(data => ({
     type: 'GET_LIST',
@@ -38,9 +39,9 @@ export function getList(){
 ----------------
 // dispatch
 try{
-  const data = await store.dispatch(getInfo(20)) // if resolve, data === action.data
+  const data = await store.dispatch(getInfo(20)) // resolve, data === action.data
 } catch(e) {
-  console.log(e) // if reject
+  console.log(e) // reject
 }
 
 ```
