@@ -9,11 +9,4 @@
  }
 
  export default ({dispatch}) => next => action => isPromise(action) ? action
-   .then(res => {
-     dispatch(res)
-   }).catch(error => {
-     dispatch({
-       ...action,
-       error
-     })
-   }) : next(action)
+   .then(res => dispatch(res)) : next(action)
