@@ -1,46 +1,46 @@
-# redux-create-reducer-curry
+# redux-async-await
 
-[![Build Status](https://travis-ci.org/eyasliu/redux-create-reducer.svg?branch=master)](https://travis-ci.org/eyasliu/redux-create-reducer)
+[![Build Status](https://travis-ci.org/eyasliu/redux-async-await.svg?branch=master)](https://travis-ci.org/eyasliu/redux-async-await)
 
-create fast, save, readability reducer with fp curry
+redux middleware deal with es7 async/await syntax action and promise action
 
 # install
 
 ```
-npm i -S redux-create-reducer-curry
+npm i -S redux-async-await
 ```
-
-# API
-
-## createReducer([initState: any])([actions: obj])
-
-- initState
-  + default: {}
-  + reducer init state
-- actions 
-  + default: {}
-  + a plain obj with function for action
-    - key is action type, val is action to change reducer
-    - function: (state, action) => {}
-      * state: the reducer state
-      * action: the action
-- @return reducer function
-  + reducer for redux
 
 # usage
 
 ```js
-import createReducer
+// apply middleware
+import {createStore, applyMiddleware} from 'redux';
+import asyncAwait from 'redux-async-await';
+const store = applyMiddleware(asyncAwait)(createStore)(yourRootReducer);
 
-// reducer
-export default createReducer({isDemo: true})({
-  TOGGLE: (state, action) => ({isDemo: !state.isDemo})
-})
-
-// action
-function toggle(){
+------------
+// **actions.js**
+// use async/await
+export async function getInfo(id){
+  const data = await fetch('/getUserInfo/' + id).then(res => res.json())
   return {
-    type: 'TOGGLE'
+    type: 'GET_USERINFO',
+    data
   }
 }
+export function getList(){
+  return fetch('/getList').then(res => res.json()).then(data => ({
+    type: 'GET_LIST',
+    data
+  }))
+}
+
+----------------
+// dispatch
+try{
+  const data = await store.dispatch(getInfo(20)) // if resolve, data === action.data
+} catch(e) {
+  console.log(e) // if reject
+}
+
 ```
